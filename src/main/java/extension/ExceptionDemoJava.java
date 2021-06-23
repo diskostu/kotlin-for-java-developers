@@ -3,7 +3,7 @@ package extension;
 /**
  * This demo shows how to call an extension function from a Java class.
  */
-public class ExtensionDemo {
+public class ExceptionDemoJava {
 
     public static void main(String[] args) {
         final String demoString = "abc";

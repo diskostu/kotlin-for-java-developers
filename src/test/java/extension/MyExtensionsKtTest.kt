@@ -16,9 +16,9 @@ internal class MyExtensionsKtTest {
         val exception = assertFailsWith<IllegalArgumentException> { string.lastChar() }
 
         // assert
-        Assertions.assertThat(exception.message).isBlank
+        Assertions.assertThat(exception.message).contains("blank")
     }
-    
+
 
     @ParameterizedTest
     @CsvSource("abc,c", "x,x")
