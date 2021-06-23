@@ -1,28 +1,24 @@
 package range
 
-fun isValidIdentifier(s: String): Boolean {
+class Challenge {
 
-    fun isValidCharacter(ch: Char) =
-        ch == '_' ||
-        ch in '0'..'9' ||
-        ch.lowercaseChar() in 'a'..'z'
+    companion object {
+        fun isValidIdentifier(s: String): Boolean {
 
-    if (s.isBlank() || s[0] in '0'..'9') return false
+            // function inside function - neat
+            fun isValidCharacter(ch: Char): Boolean =
+                ch == '_' ||
+                ch.isLetterOrDigit() // equivalent: ch in '0'..'9' || ch.lowercaseChar() in 'a'..'z'
 
-    for (ch in s) {
-        if (!isValidCharacter(ch)) {
-            return false
+            if (s.isBlank() || s[0].isDigit()) return false
+
+            for (ch in s) {
+                if (!isValidCharacter(ch)) {
+                    return false
+                }
+            }
+
+            return true
         }
     }
-
-    return true
-}
-
-fun main() {
-    println(isValidIdentifier("name"))   // true
-    println(isValidIdentifier("_name"))  // true
-    println(isValidIdentifier("_12"))    // true
-    println(isValidIdentifier(""))       // false
-    println(isValidIdentifier("012"))    // false
-    println(isValidIdentifier("no$"))    // false
 }
